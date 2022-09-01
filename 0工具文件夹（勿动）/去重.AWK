@@ -1,0 +1,21 @@
+BEGIN{
+	FS="|";
+	CHONGFU=0;
+	CHONGFA=0;
+	}
+NR==FNR{
+	YET[$1]=1;
+}
+
+NR>FNR{
+	if(PRE[$1]=="1"){
+		CHONGFU=CHONGFU+1;
+	}else{
+		if(YET[$1]=="1"){
+			CHONGFA=CHONGFA+1;
+		}else{
+			printf("%s\n",$1);
+		}
+		PRE[$1]=1;
+	}
+}
